@@ -3,6 +3,7 @@ public class Exercici1 {
 	
 	public static void main(String[] args) {
 		
+		
 		// 1.1 
 		// Creem un array i fem que es passi de voltes perque salti l'error de OutOfBounds
 		// veiem que salta l'error de ArrayIndexOutOfBoundsException
@@ -44,12 +45,58 @@ public class Exercici1 {
 			// 1.7
 			// Mostrem les propietats de "Exception"
 			System.out.println("Execució codi del catch");
-			e.getMessage();
-			e.getCause();
+			System.out.println("Mostrem el misstage de 'getMessage': " + e.getMessage());
+			System.out.println("Mostrem el missatge de 'getCause': " + e.getCause());
+			System.out.println("Mostrem el missatge de 'getLocalizedMessage': " + e.getLocalizedMessage());
+			System.out.println("Missatge de 'getClass': " + e.getClass());
+			System.out.println("Missatge de 'getSupressed': " + e.getSuppressed());
 			e.printStackTrace();
 		} finally {
 			System.out.println("Codi de finally");
 		}	
+		
+		// 1.8
+		// Probem de fer el try and catch en el main i veiem que l'error prohibeix que s'acabin les funcions cridades.
+//		try {
+		f1();
+//		} catch (ArrayIndexOutOfBoundsException e) {
+//			System.out.println("T'has passat de voltes.");
+//		}
 
 	}
+	// 1.9
+	// Posem el try anad catch a cadascuna de les fucions per donar-nos compte de que l'error se soluciona controlant l'error 
+	// a la funció on hi ha el possible codi amb l'error.
+	public static void f1() {
+		System.out.println("Estic a la funció 1");
+		try {
+		f2();
+		} catch (Exception e) {
+			System.out.println("T'has passat de voltes.");
+		}
+		System.out.println("Aqui acaba la funció 1");
+	}
+	private static void f2() {
+		System.out.println("Estic a la funció 2");
+//		try {
+		f3();
+//		} catch (Exception e) {
+//			System.out.println("T'has passat de voltes.");
+//		}
+		System.out.println("Aqui acaba la funció 2");
+	}
+	private static void f3() {
+		System.out.println("Estic a la funció 3: ");
+		String[] salutacions= {"hola", "hi", "aloha", "alo"};
+		try {
+			for (int i = 0; i < salutacions.length + 1; i++) {
+				System.out.println(salutacions[i]);
+			}
+		} catch (Exception e) {
+			System.out.println("T'has passat de voltes.");
+		}
+		System.out.println("Aqui acaba la funció 3");
+	} 
+	
+	
 }
