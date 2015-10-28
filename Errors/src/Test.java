@@ -1,11 +1,30 @@
 
+
 public class Test {
 	public static void main(String[] args) {
 		try {
-			System.out.println(5 / 0);
+			Cua cua = new LlistaE();
+		
+			Integer num = new Integer(1);
+			Integer num2 = new Integer(2);
+			Integer num3 = new Integer(3);
+			
+			cua.encuar(num);
+			cua.encuar(num2);
+			cua.encuar(num3);
+			
+			System.out.println("la mida es: "+cua.mida());
+			
+			int mida = cua.mida();
+			for (int i = 0; i < mida ; i++) {
+				
+				System.out.println(cua.primer());
+				cua.desencuar();
+			}
+			System.out.println("la mida es: "+cua.mida());
+		} catch (AlertaNulls e) {
+			System.out.println(e.toString());
 		}
-		catch (Exception e){
-			System.out.println("Vigila, estàs dividint per 0");
-		}
+		
 	}
 }
